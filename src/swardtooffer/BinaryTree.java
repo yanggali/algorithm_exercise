@@ -1,5 +1,7 @@
 package swardtooffer;
 
+import sun.reflect.generics.tree.Tree;
+
 import java.net.Inet4Address;
 import java.util.*;
 
@@ -324,6 +326,32 @@ public class BinaryTree {
         return list;
     }
 
+    public List<List<Integer>> FindPath_II(TreeNode root, int target){
+        List<List<Integer>> list = new ArrayList<>();
+        List<Integer> path = new ArrayList<>();
+        FindPath_IIHelper(root, list, path, 0, target);
+        return list;
+    }
+
+    public void FindPath_IIHelper(TreeNode node, List<List<Integer>> list, List<Integer> path, int currentsum, int target){
+        if (node == null){
+            return;
+        }
+        path.add(node.val);
+        currentsum += node.val;
+        if (node.left == null && node.right == null){
+            if (currentsum == target){
+                list.add(new ArrayList<>(path));
+            }
+        }
+        else {
+            FindPath_IIHelper(node.left, list, path, currentsum, target);
+            path.remove(path.size()-1);
+            FindPath_IIHelper(node.right, list, path, currentsum, target);
+            path.remove(path.size()-1);
+        }
+    }
+
     /**
      * 求树的最长路径
      * @param root
@@ -389,7 +417,8 @@ public class BinaryTree {
         int[] temparray = {4,8,6,12,16,14,10};
         BinaryTree temp = new BinaryTree();
         TreeNode root = temp.reConstructBinaryTree(pre, in);
-        ArrayList<ArrayList<Integer>> list = temp.FindPath(root, 16);
+        ArrayList<ArrayList<Integer>> list = temp.FindPath(root, 11);
+        List<List<Integer>> list2 = temp.FindPath_II(root, 11);
         System.out.println(list.size());
     }
 }
