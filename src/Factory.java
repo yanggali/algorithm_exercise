@@ -47,7 +47,7 @@ class SimpleFactory {
 }
 
 /**
- * 多方法工厂
+ * 多方法工厂（常用），可以构建有参构造函数
  */
 class MultiFactory{
     public static ITask createJavaTask(){
@@ -66,5 +66,43 @@ class MultiFactory{
 
         ITask sqltask = MultiFactory.createSqlTask();
         sqltask.desc();
+    }
+}
+
+/**
+ * 普通工厂，每个子类添加一个工厂，添加子类时添加一个工厂子类，可以构造有参构造函数
+ */
+abstract class ITaskFactory{
+    public abstract ITask create();
+}
+
+class JavaTaskFactory extends ITaskFactory{
+    @Override
+    public ITask create() {
+        return new JavaTask();
+    }
+}
+
+class SqlTaskFactory extends ITaskFactory{
+    @Override
+    public ITask create() {
+        return new SqlTask();
+    }
+}
+
+class AlgoTaskFactory extends ITaskFactory{
+    @Override
+    public ITask create() {
+        return new AlgorithmTask();
+    }
+}
+
+public class Factory{
+    public static void main(String[] args) {
+        ITask javatask = (new JavaTaskFactory()).create();
+        javatask.desc();
+
+        ITask algotask = (new AlgoTaskFactory()).create();
+        algotask.desc();
     }
 }
