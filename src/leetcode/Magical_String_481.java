@@ -10,27 +10,24 @@ public class Magical_String_481 {
         System.out.println(m.magicalString(6));
     }
     public int magicalString(int n) {
-        if (n == 0) return 0;
-        else if (n <= 3) return 1;
-        int[] num = new int[n];
-        num[0] = 1;
-        num[1] = 2;
+        if (n <= 1) return n;
+        int[] m = new int[n];
+        m[0] = 1;
+        m[1] = 2;
+        int index = 1, count = 1;
         boolean isone = false;
-        int index = 1, result = 1;
-        for (int i = 1;i < n;i++){
-            for (int j = num[index]; j > 0; j--) {
-                if (i >= n) break;
-                num[i] = isone ? 1 : 2;
-                i++;
+        for (int i = 1; i < n; i++) {
+            for (int j = 1; j <= m[i]; j++) {
+                if (index >= n) break;
                 if (isone) {
-                    result++;
-                }
+                    m[index] = 1;
+                    count++;
+                } else m[index] = 2;
+                index++;
             }
-            index++;
-            i--;
             isone = !isone;
         }
-        return result;
+        return count;
     }
 
 }
