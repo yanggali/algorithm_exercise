@@ -4,6 +4,20 @@ class ListNode {
    int val;
    ListNode next;
    ListNode(int x) { val = x; }
+
+   public static ListNode array2list(int[] array) {
+       ListNode head = null;
+       if (array.length < 1){
+           return head;
+       }
+       head = new ListNode(-1);
+       ListNode node = head;
+       for (int i = 0; i < array.length; i++) {
+           node.next = new ListNode(array[i]);
+           node = node.next;
+       }
+       return head.next;
+   }
 }
 
 public class Add_Two_Numbers_2 {
