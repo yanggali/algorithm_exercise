@@ -1,5 +1,8 @@
 package leetcode;
 
+/**
+ * 给定一个股票价格数组，可以尽可能多的交易，求最大收益
+ */
 public class Best_Time_to_Buy_and_Sell_Stock_II_122 {
     public static void main(String[] args) {
         Best_Time_to_Buy_and_Sell_Stock_II_122 t = new Best_Time_to_Buy_and_Sell_Stock_II_122();

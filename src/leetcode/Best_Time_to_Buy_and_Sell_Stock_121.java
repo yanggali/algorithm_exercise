@@ -1,5 +1,8 @@
 package leetcode;
 
+/**
+ * 只能进行一次交易，求最大的利率
+ */
 public class Best_Time_to_Buy_and_Sell_Stock_121 {
     public int maxProfit(int[] prices) {
         if (prices == null || prices.length < 2){

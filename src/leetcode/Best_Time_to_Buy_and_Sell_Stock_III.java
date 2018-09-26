@@ -1,5 +1,8 @@
 package leetcode;
 
+/**
+ * 买卖价格的最佳时间，每次最多可以交易两次，一次交易包括一次买和一次卖，每次卖之前必须买
+ */
 public class Best_Time_to_Buy_and_Sell_Stock_III {
     public int maxProfit(int[] prices) {
         int b1 = Integer.MIN_VALUE,b2=Integer.MIN_VALUE;
