@@ -21,30 +21,22 @@ public class Permutations_46 {
         List<List<Integer>> list = new ArrayList<>();
         List<Integer> permute = new ArrayList<>();
         int[] visited = new int[nums.length];
-        permuteHelper(visited, nums, 0, permute, list);
+        permuteHelper(visited, nums, permute, list);
         return list;
     }
-    public void permuteHelper(int[] visited,int[] nums, int index, List<Integer> permute, List<List<Integer>> list){
+    public void permuteHelper(int[] visited,int[] nums, List<Integer> permute, List<List<Integer>> list){
         if (permute.size() == visited.length){
-            list.add(copy(permute));
+            list.add(new ArrayList<>(permute));
             return;
         }
         for (int i = 0; i < nums.length; i++) {
             if (visited[i] == 0){
                 permute.add(nums[i]);
                 visited[i] = 1;
-                permuteHelper(visited, nums, index+1, permute, list);
-                permute.remove(index);
+                permuteHelper(visited, nums, permute, list);
+                permute.remove(permute.size()-1);
                 visited[i] = 0;
             }
         }
-    }
-
-    public List<Integer> copy(List<Integer> list){
-        List<Integer> copy = new ArrayList<>();
-        for (Integer num : list) {
-            copy.add(num);
-        }
-        return copy;
     }
 }
